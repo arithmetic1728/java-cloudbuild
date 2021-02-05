@@ -16,6 +16,10 @@
 
 package com.google.cloud.devtools.cloudbuild.v1;
 
+import com.google.api.gax.core.CredentialsProvider;
+import com.google.api.gax.core.FixedCredentialsProvider;
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.cloud.devtools.cloudbuild.v1.CloudBuildClient.ListBuildTriggersPagedResponse;
 import com.google.cloudbuild.v1.BuildTrigger;
 import com.google.common.collect.Lists;
@@ -24,10 +28,21 @@ import java.util.List;
 import org.junit.Test;
 
 public class SampleTest {
+  public CloudBuildSettings createADCSetting() throws Exception {
+    return CloudBuildSettings.newBuilder().build();
+  }
+
+  public CloudBuildSettings createFixedCredsSetting() throws Exception {
+    GoogleCredentials creds = ServiceAccountCredentials.getApplicationDefault();
+    CredentialsProvider provider = FixedCredentialsProvider.create(creds);
+    return CloudBuildSettings.newBuilder().setCredentialsProvider(provider).build();
+  }
 
   @Test
   public void myTest() throws Exception {
-    CloudBuildSettings settings = CloudBuildSettings.newBuilder().build();
+    // CloudBuildSettings settings = createADCSetting();
+    CloudBuildSettings settings = createFixedCredsSetting();
+
     CloudBuildClient client = CloudBuildClient.create(settings);
     String project = "dcatest-281318";
 
