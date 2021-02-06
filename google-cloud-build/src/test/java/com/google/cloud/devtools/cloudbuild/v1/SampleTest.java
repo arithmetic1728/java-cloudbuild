@@ -49,12 +49,12 @@ public class SampleTest {
 
   @Test
   public void myTest() throws Exception {
-    // CloudBuildSettings settings = createADCSetting();
+    CloudBuildSettings settings = createADCSetting();
     // CloudBuildSettings settings = createFixedCredsSetting();
-    CloudBuildSettings settings = createCustomScopeSetting();
+    // CloudBuildSettings settings = createCustomScopeSetting();
 
     CloudBuildClient client = CloudBuildClient.create(settings);
-    String project = "dcatest-281318";
+    String project = "busun-sandbox";
 
     ListBuildTriggersPagedResponse resp = client.listBuildTriggers(project);
     List<BuildTrigger> resources = Lists.newArrayList(resp.iterateAll());
