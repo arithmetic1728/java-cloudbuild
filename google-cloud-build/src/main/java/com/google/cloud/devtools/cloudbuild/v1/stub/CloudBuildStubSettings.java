@@ -632,7 +632,7 @@ public class CloudBuildStubSettings extends StubSettings<CloudBuildStubSettings>
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setInternalHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       builder.setEndpoint(getDefaultEndpoint());
-      builder.setDefaultEndpoint(getDefaultEndpoint());
+      builder.setDefaultApiEndpoint(getDefaultEndpoint());
 
       return initDefaults(builder);
     }
